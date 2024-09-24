@@ -11,10 +11,7 @@ import { BlogService } from './blog.service';
 
 @Controller('blog')
 export class BlogController {
-  blogService: BlogService;
-  constructor() {
-    this.blogService = new BlogService();
-  }
+  constructor(private blogService: BlogService) {}
 
   @Get()
   getAllPosts() {
@@ -30,9 +27,11 @@ export class BlogController {
   }
 
   @Get('/:id')
-  getPost(@Param('id') id: string) {
-    console.log(`[id: ${id}]게시글 하나 가져오기`);
-    return this.blogService.getPost(id);
+  async getPost(@Param('id') id: string) {
+    console.log('게시글 하나 가져오기');
+    const post = await this.blogService.getPost(id);
+    console.log(post);
+    return post;
   }
 
   @Delete('/:id')
