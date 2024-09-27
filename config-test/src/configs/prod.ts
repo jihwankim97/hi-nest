@@ -1,4 +1,4 @@
 export default {
-    logLevel: 'error',
-    dbInfo: 'http//prod-mysql:3306',
-}
+  logLevel: 'error',
+  dbInfo: 'http//prod-mysql:3306',
+};

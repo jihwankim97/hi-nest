@@ -16,11 +16,15 @@ export class AppController {
     return this.configService.get('SERVICE_URL');
   }
 
-
   @Get('db-info')
   getTest(): string {
     console.log(this.configService.get('logLevel'));
     console.log(this.configService.get('apiVersion'));
     return this.configService.get('dbInfo');
+  }
+
+  @Get('redis-info')
+  getRedisInfo(): string {
+    return `${this.configService.get('redis.host')}:${this.configService.get('redis.port')}`;
   }
 }
